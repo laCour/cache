@@ -17,7 +17,7 @@ bundle
 rake bootstrap
 ```
 
-Once you [configure](#configuration) the application, you can start the application using `foreman start`. The application should now be running on [localhost:5000](localhost:5000).
+Once you [configure](#configuration) the application, you can start the application using `foreman start`. The application should now be running on [localhost:5000](http://localhost:5000).
 
 ## Deploying to Heroku
 
@@ -55,4 +55,4 @@ BLOCKIO_PIN=
 
 ## Warning
 
-This software is not intended for production use. If you wish to use this software for production use, I highly suggest removing the dependency of Block.io for deposits/payouts. This was only used to keep the application slim for ++++. I recommend the [bitcoin-ruby](http://rubygems.org/gems/bitcoin-ruby) gem for Bitcoin or Litecoin.
+This software is not intended for production use. If you wish to use this software for production use, I highly suggest removing the dependency of Block.io for deposits/payouts. This was only used to keep the application slim for Heroku. I recommend the [bitcoin-ruby](http://rubygems.org/gems/bitcoin-ruby) gem for Bitcoin or Litecoin.
