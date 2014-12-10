@@ -1,0 +1,13 @@
+{
+  "name": "Cache",
+  "description": "A rails app for sharing content using digital currencies.",
+  "repository": "https://github.com/lacour/cache",
+  "keywords": ["rails", "bitcoin", "file sharing"],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  },
+  "env": {
+    "RAILS_ENV": "production"
+  },
+  "addons": ["heroku-postgresql"]
+}

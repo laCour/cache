@@ -1,0 +1,16 @@
+!!! 5
+%html
+  %head
+    %meta{charset: 'utf-8'}
+    %title= APP_CONFIG['service_name']
+    %link{rel: :stylesheet, href: '//fonts.googleapis.com/css?family=Raleway:200'}
+    = stylesheet_link_tag 'cache', media: 'all'
+    = csrf_meta_tags
+  %body
+    = yield
+
+    = render 'shared/footer'
+
+    = javascript_include_tag 'application'
+    
+    = yield :scripts

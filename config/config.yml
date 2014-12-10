@@ -1,0 +1,26 @@
+defaults: &defaults
+  service_name: Cache
+  service_fee: 0.01 # Percent you take from transactions (mind network fees)
+  minimum_amount: 0.00100000 # Minimum transaction amount (mind network fees)
+  network_min_fee: 0.00001 # The digital currency's minimum network fee
+  token_length: 4 # Length of unique listing URL token
+  max_cover_size: 4 # Maximum size (in megabytes) for cover images
+  max_document_size: 25 # Maximum size (in megabytes) for documents
+
+development:
+  <<: *defaults
+  network: btctest
+  fee_address: 2NB7kYfmujmtTHfbW5jtPM47SsDFLqLcxfv
+  address_regex: !ruby/regexp '/\A(m|n|2)[a-zA-Z1-9]{26,35}\z/'
+
+test:
+  <<: *defaults
+  network: btctest
+  fee_address: 2NB7kYfmujmtTHfbW5jtPM47SsDFLqLcxfv
+  address_regex: !ruby/regexp '/\A(m|n|2)[a-zA-Z1-9]{26,35}\z/'
+
+production:
+  <<: *defaults
+  network: btc
+  fee_address: 1PFJxZq4LC8Q4w5QAKT3w59rFSfwG8HoMr
+  address_regex: !ruby/regexp '/\A(1|3)[a-zA-Z1-9]{26,35}\z/'

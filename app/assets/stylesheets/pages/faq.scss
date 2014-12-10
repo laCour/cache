@@ -1,0 +1,11 @@
+.faq {
+  padding-bottom: 1em;
+
+  .question {
+    font-weight: bold;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}

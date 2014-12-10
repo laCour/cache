@@ -1,0 +1,21 @@
+= render "shared/header"
+.content
+  .faq
+    .question
+      What is #{APP_CONFIG['service_name']}?
+    .answer
+      #{APP_CONFIG['service_name']} is a service that allows you to sell files for digital currency (bitcoins).
+  .faq
+    .question Are there any service fees?
+    .answer
+    - if APP_CONFIG['service_fee'] == 0
+      No. The service is completely free.
+    - else
+      Yes. The service charges only #{(APP_CONFIG['service_fee'] * 100).round}% of each transaction.
+  .faq
+    .question Is there a minimum transaction amount?
+    .answer
+    - if APP_CONFIG['minimum_amount'] == 0
+      No. You can create listings for free files.
+    - else
+      Yes. The minimum transaction amount is #{APP_CONFIG['minimum_amount']}.

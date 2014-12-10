@@ -1,0 +1,159 @@
+$primary-color: rgb(242, 169, 0);
+
+$body-color: rgb(119, 119, 119);
+$body-background: rgb(243, 243, 243);
+
+$container-width: 720px;
+$container-padding: 1em;
+$container-background: rgb(255, 255, 255);
+
+$header-color: rgb(75, 75, 75);
+$subheader-color: rgb(102, 102, 102);
+
+$border-color: rgb(214, 214, 214);
+$border-radius: 4px;
+
+$footer-color: rgb(175, 175, 175);
+
+body {
+  color: $body-color;
+  background: $body-background;
+  line-height: 1.6;
+}
+
+a, a:active, a:focus {
+  outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: $header-color;
+}
+
+.header {
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  padding: $container-padding;
+  text-align: center;
+  background: $container-background;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid $border-color;
+
+  h1 {
+    font-size: 300%;
+    font-weight: 100;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 125%;
+    font-weight: 100;
+    line-height: 1.5;
+    margin: 0;
+    color: $subheader-color;
+    letter-spacing: -0.02em;
+  }
+}
+
+.content {
+  font-family: sans-serif;
+  font-weight: 100;
+  margin: 0 auto;
+  padding: $container-padding;
+  background: $container-background;
+  letter-spacing: 0.01em;
+}
+
+footer {
+  color: $footer-color;
+  padding: 2em;
+  text-align: center;
+  border-top: 1px solid $border-color;
+
+  a {
+    color: $footer-color;
+    text-decoration: none;
+    padding-right: 1em;
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+aside {
+  background: $primary-color;
+  padding: 0.3em 1em;
+  border-radius: $border-radius;
+  color: #fff;
+
+  a {
+    color: lighten($primary-color, 35%);
+  }
+
+  p {
+    margin: 0.5em;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+form a.pure-button:last-child, form input[type=submit] {
+  margin-top: 0.75em;
+}
+
+.expand-button {
+  font-size: 125%;
+  display: block;
+}
+
+.pure-form input[type="text"]:focus, .pure-form input[type="password"]:focus, .pure-form input[type="email"]:focus, .pure-form input[type="url"]:focus, .pure-form input[type="date"]:focus, .pure-form input[type="month"]:focus, .pure-form input[type="time"]:focus, .pure-form input[type="datetime"]:focus, .pure-form input[type="datetime-local"]:focus, .pure-form input[type="week"]:focus, .pure-form input[type="number"]:focus, .pure-form input[type="search"]:focus, .pure-form input[type="tel"]:focus, .pure-form input[type="color"]:focus, .pure-form select:focus, .pure-form textarea:focus {
+  border-color: $primary-color;
+}
+
+@media screen and (min-width: 48em) {
+  .header, .content {
+    width: $container-width;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  .content {
+    box-shadow: 0 .2em 0 0 $border-color,0 0 0 1px $border-color;
+
+    p {
+      font-size: 1.125em;
+    }
+  }
+
+  body > .content:last-of-type {
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+
+  .header {
+    margin: 2em auto 0;
+    border: 1px solid $border-color;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+
+    h1 {
+      font-size: 320%;
+    }
+
+    h2 {
+      font-size: 128%;
+    }
+  }
+
+  footer {
+    border-top: none;
+  }
+
+  .expand-button {
+    font-size: 125%;
+    display: block;
+  }
+}

@@ -1,0 +1,52 @@
+- if @listing.cover.exists?
+  .header#cover.cover{ :style => "background-image: url(#{@listing.cover.url});" }
+- else
+  .header#cover
+    %h1= @listing.title
+    %h2 #{@listing.amount} BTC
+.header#purchase.cover(hidden)
+  %p
+    Waiting for
+    %span#amount= @listing.amount
+    BTC to be sent.
+  %a.pure-button.download(hidden) Download
+  #qrcode
+  %p
+    %span#address ...
+.content.meta-information
+  .pure-g
+    .meta.pure-u-1-3
+      %p
+        = succeed " #{number_to_human_size(@listing.document_file_size)}" do
+          %strong File Size: 
+    .meta.pure-u-1-3
+      %p
+        = succeed " #{@listing.sales}" do
+          %strong Sales: 
+    .meta.pure-u-1-3
+      %p
+        = succeed " #{@listing.amount} BTC" do
+          %strong Price: 
+.content
+  - if @listing.cover.exists?
+    %h2= @listing.title
+  - if @listing.description.present?
+    %p= @listing.description
+  - if @key.nil?
+    %a.pure-button.expand-button.purchase(href=new_transaction_listing_path) Purchase
+  - else
+    %a.pure-button.expand-button(href=edit_listing_path) Edit Listing
+- if @key.present?
+  .content
+    %aside
+      %p This listing is public! Share #{link_to 'this link', listing_path} to start earning money.
+.content
+  %p.powered-by
+    %a(href=root_path) Powered by #{APP_CONFIG['service_name']}.
+    Sell your content in seconds.
+
+- content_for :scripts do
+  :coffeescript
+    window.pusher_key = 'e9f5cc20074501ca7395'
+    window.pusher_host = 'slanger1.chain.so'
+    window.pusher_prefix = 'address_#{APP_CONFIG['network']}_'

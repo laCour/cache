@@ -1,0 +1,49 @@
+- if @listing.cover.exists?
+  .header.cover{ :style => "background-image: url(#{@listing.cover.url});" }
+    %a.pure-button.cover
+      .icon-camera Replace Cover
+- else
+  .header.upload
+    %a.pure-button.cover
+      .icon-camera Upload Cover
+
+= form_for @listing, url: {:action => 'update'}, html: {id: 'cover_form', multipart: true} do |form|
+  = form.file_field :cover, id: 'cover', hidden: '', accept: 'image/*'
+
+= form_for @listing, url: {:action => 'update'}, html: {class: 'pure-form pure-form-stacked', multipart: true} do |form|
+  .content.document
+    = form.file_field :document, id: 'document', hidden: ''
+    - if @listing.document.exists?
+      %a.document= @listing.document_file_name
+    - else
+      %a.document Select File For Sale
+  .content
+    .pure-g
+      - if @listing.errors.any?
+        .pure-u-1
+          #error_explanation
+            %h2
+              = pluralize(@listing.errors.count, "error")
+              prohibited this listing from being saved:
+            %ul
+              - @listing.errors.full_messages.each do |msg|
+                %li= msg
+      .pure-u-1.pure-u-md-1-3
+        = form.label :title, 'Item Title'
+        = form.text_field :title, placeholder: 'My Book', value: @listing.title
+      .pure-u-1.pure-u-md-1-3
+        = form.label :amount, 'Item Price'
+        = form.text_field :amount, placeholder: '0.05', value: @listing.amount
+      .pure-u-1.pure-u-md-1-3
+        = form.label :address, 'Payout Address'
+        = form.text_field :address, placeholder: '17VZNX1SN5...', value: @listing.address, class: 'pure-input-1'
+      .pure-u-1
+        = form.label :description
+        = form.text_area :description, rows: 5, class: 'pure-input-1', value: @listing.description
+      .pure-u-1
+        = form.submit 'Update Listing', class: 'pure-input-1 pure-button expand-button'
+.content
+  %aside
+    %p
+      Save this link for future access to this page:
+      %a(href="#{edit_listing_path(@listing.token)}?key=#{@listing.key}") Bookmarklet

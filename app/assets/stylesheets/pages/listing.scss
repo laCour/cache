@@ -1,0 +1,64 @@
+.header {
+  transition: all 200ms ease-in-out;
+
+  &.upload {
+    background: $body-background;
+    cursor: pointer;
+
+    a.pure-button {
+      font-family: inherit;
+      margin: 2em 0;
+    }
+  }
+
+  &.cover {
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+
+    a.pure-button {
+      font-family: inherit;
+      opacity: 0;
+      position: relative;
+      top: 50%;
+      transition: opacity 200ms ease-in-out;
+    }
+
+    &:hover a.pure-button {
+      opacity: 1;
+    }
+  }
+}
+
+.content.document {
+  text-align: center;
+
+  a.document {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.content.meta-information {
+  padding: 0;
+
+  p {
+    margin: 0.5em 0;
+    text-align: center;
+  }
+}
+
+p.powered-by {
+  text-align: center;
+  margin: 0;
+
+  a {
+    color: $body-color;
+  }
+}
+
+@media screen and (min-width: 48em) {
+  .content.meta-information {
+    padding: 0 2em;
+  }
+}
