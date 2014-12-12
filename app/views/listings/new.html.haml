@@ -1,4 +1,4 @@
-- if @cover_photo.present?
+- if @cover_photo.present? && !@cover_photo.new_record?
   .header.cover{ :style => "background-image: url(#{@cover_photo.image.url});" }
     %a.pure-button.cover
       .icon-camera Replace Cover
@@ -10,7 +10,7 @@
 = form_for @cover_photo, url: cover_upload_path, :method => :post, html: {id: 'cover_form', multipart: true} do |form|
   = form.file_field :image, id: 'cover', hidden: true, accept: 'image/*'
 
-= form_for @listing, url: update_listing_path(@listing.token), :method => :patch, html: {class: 'pure-form pure-form-stacked', multipart: true} do |form|
+= form_for @listing, url: listings_path, :method => :post, html: {class: 'pure-form pure-form-stacked', multipart: true} do |form|
   .content.document
     = form.file_field :document, id: 'document', hidden: ''
     - if @listing.document.exists?
@@ -21,9 +21,4 @@
     .pure-g
       = render :partial => "form", locals: {form: form}
       .pure-u-1
-        = form.submit 'Update Listing', class: 'pure-input-1 pure-button expand-button'
-.content
-  %aside
-    %p
-      Save this link for future access to this page:
-      = link_to "Bookmarklet", edit_listing_path(@listing.token)
+        = form.submit 'Create Listing', class: 'pure-input-1 pure-button expand-button'

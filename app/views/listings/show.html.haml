@@ -1,5 +1,5 @@
-- if @listing.cover.exists?
-  .header#cover.cover{ :style => "background-image: url(#{@listing.cover.url});" }
+- if @cover_photo.present?
+  .header#cover.cover{ :style => "background-image: url(#{@cover_photo.image.url});" }
 - else
   .header#cover
     %h1= @listing.title
@@ -28,21 +28,24 @@
         = succeed " #{@listing.amount} BTC" do
           %strong Price: 
 .content
-  - if @listing.cover.exists?
+  - if @cover_photo.present?
     %h2= @listing.title
   - if @listing.description.present?
     %p= @listing.description
   - if @key.nil?
-    %a.pure-button.expand-button.purchase(href=new_transaction_listing_path) Purchase
+    = link_to "Purchase", new_transaction_listing_path, :class => "pure-button expand-button purcahse"
   - else
-    %a.pure-button.expand-button(href=edit_listing_path) Edit Listing
+    .right
+      = link_to "Edit Listing", edit_listing_path(@listing.token, :key => @listing.key), :class => "pure-button"
+      = link_to "Delete listing", listing_path(@listing.token, :key => @listing.key), :method => :delete, :data => { :confirm => 'Are you sure you want to delete this listing?' }, :class => "pure-button button-error"
 - if @key.present?
   .content
     %aside
-      %p This listing is public! Share #{link_to 'this link', listing_path} to start earning money.
+      %p 
+        = "This listing is public! #{link_to 'Share this link', listing_path(@listing)} to start earning money.".html_safe
 .content
   %p.powered-by
-    %a(href=root_path) Powered by #{APP_CONFIG['service_name']}.
+    = link_to "Powered by #{APP_CONFIG['service_name']}", root_path
     Sell your content in seconds.
 
 - content_for :scripts do
