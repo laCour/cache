@@ -33,7 +33,7 @@
   - if @listing.description.present?
     %p= @listing.description
   - if @key.nil?
-    = link_to "Purchase", new_transaction_listing_path, :class => "pure-button expand-button purcahse"
+    = link_to "Purchase", new_transaction_listing_path, :class => "pure-button expand-button purchase"
   - else
     .right
       = link_to "Edit Listing", edit_listing_path(@listing.token, :key => @listing.key), :class => "pure-button"
@@ -42,7 +42,7 @@
   .content
     %aside
       %p 
-        = "This listing is public! #{link_to 'Share this link', listing_path(@listing)} to start earning money.".html_safe
+        = "This listing is public! #{link_to 'Share this link', listing_path(@listing.token)} to start earning money.".html_safe
 .content
   %p.powered-by
     = link_to "Powered by #{APP_CONFIG['service_name']}", root_path
