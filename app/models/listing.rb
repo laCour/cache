@@ -16,16 +16,18 @@ class Listing < ActiveRecord::Base
   validates :title, :address, :amount, :presence => true
   validates :title, length: { in: 5..80 }
   validates :amount, numericality: { greater_than: APP_CONFIG['minimum_amount'] }
+  validates :address, :address => true
   validates :description, length: { maximum: 2000 }
 
   attr_accessor :cover_photo_token
 
   after_save :attach_correct_cover_photo, :if => :cover_photo_token
 
+  private
 
-private
   def attach_correct_cover_photo
     cover_photo = CoverPhoto.find(self.cover_photo_token)
+
     if cover_photo.present?
       cover_photo.listing_id = self.id
       cover_photo.save!
