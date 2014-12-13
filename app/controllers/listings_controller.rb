@@ -35,6 +35,7 @@ class ListingsController < ApplicationController
       flash[:success] = "You've updated the listing \"#{@listing.title}\""
       redirect_to listing_path(@listing.token) and return
     else
+      @cover_photo = @listing.cover_photo
       render 'edit'
     end
   end
