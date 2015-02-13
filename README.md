@@ -2,9 +2,9 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-This is Ruby on Rails application for sharing content in exchange for digital currency. [Watch a realtime transaction.](https://www.mediacru.sh/VA-PxAiyx-Fc)
+This is Ruby on Rails application for sharing content in exchange for digital currency.
 
-![Screenshot](https://www.mediacru.sh/2/2qRQ7SmiD0gU.png)
+![Screenshot](http://i.imgur.com/tzvhZvf.png)
 
 ## Running Locally
 
